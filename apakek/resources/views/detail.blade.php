@@ -54,13 +54,30 @@
                     <p>jam buka</p>
                     <p>Range Harga</p>
                     {{-- </li> --}}
+                    <!-- Button trigger modal -->
+                    <button type="button" class="btn btn-success mx-auto mb-2" data-bs-toggle="modal"
+                        data-bs-target="#exampleModal">
+                        Lihat Menu
+                    </button>
 
-                    {{-- </center> --}}
+                    <!-- Modal -->
+                    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel"
+                        aria-hidden="true">
+                        <div class="modal-dialog" style="margin-top: 13vh; height: 83vh; width: 50vw;">
+                            <div class="modal-content" style="background-color: #ffffff00">
+
+                                    <img class="mb-2" src="img/kopi1.png" alt="">
+                                    <img class="mb-2" src="img/bgkopi.jpg" alt="">
+                            </div>
+                        </div>
+                    </div>
+
+
                 </div>
                 <div class="mt-1 d-flex justify-content-center">
                     <div class="row">
                         <div class="col-md-12">
-                            <div class="card card-review" style="height: 52vh; background-color:rgb(247, 240, 231);">
+                            <div class="card card-review" style="height: 45vh; background-color:rgb(247, 240, 231);">
                                 <div class="scrollY">
                                     <div class="row">
                                         <center>
@@ -517,51 +534,51 @@
         </div>
     </div>
 
-{{-- </div> --}}
+    {{-- </div> --}}
 
 
-<script>
-    $('.btn-komen').click(function() {
-        let temp_komen = $('.add_komen').val();
-        $('#komen_desc').val(temp_komen);
-    })
-</script>
+    <script>
+        $('.btn-komen').click(function() {
+            let temp_komen = $('.add_komen').val();
+            $('#komen_desc').val(temp_komen);
+        })
+    </script>
 
-<script>
-    $('.form_komen').submit(function() {
-        if (!$('input:radio', this).is(':checked')) {
-            alert('Kolom Rating Tidak Boleh Kosong!');
-            return false;
-        }
-    });
-
-
-    $("#foto_review").change(function(e) {
-        $('.flag_prev').remove();
-
-        var count = 1;
-        var files = e.currentTarget.files;
-        var imgcode = [];
-        var final;
-
-        if (e.currentTarget.files.length > 5) {
-            alert("File Terlalu Banyak! Maksimal Upload 5");
-            this.value = "";
-            return false;
-        } else {
-            for (var x in files) {
-
-                if (files[x].size > 1048576) {
-                    alert("File Terlalu Besar!");
-                    this.value = "";
-                    return false;
-                } else {
-                    var dir = URL.createObjectURL(files[x]);
-                    $('.upload-prev').prepend('<img class="flag_prev mx-1" src="' + dir +
-                        '" width="50" height="50" style="border-radius:10px">');
-                }
-
+    <script>
+        $('.form_komen').submit(function() {
+            if (!$('input:radio', this).is(':checked')) {
+                alert('Kolom Rating Tidak Boleh Kosong!');
+                return false;
             }
-        }
-    });
-</script>
+        });
+
+
+        $("#foto_review").change(function(e) {
+            $('.flag_prev').remove();
+
+            var count = 1;
+            var files = e.currentTarget.files;
+            var imgcode = [];
+            var final;
+
+            if (e.currentTarget.files.length > 5) {
+                alert("File Terlalu Banyak! Maksimal Upload 5");
+                this.value = "";
+                return false;
+            } else {
+                for (var x in files) {
+
+                    if (files[x].size > 5048576) {
+                        alert("File Terlalu Besar!");
+                        this.value = "";
+                        return false;
+                    } else {
+                        var dir = URL.createObjectURL(files[x]);
+                        $('.upload-prev').prepend('<img class="flag_prev mx-1" src="' + dir +
+                            '" width="50" height="50" style="border-radius:10px">');
+                    }
+
+                }
+            }
+        });
+    </script>

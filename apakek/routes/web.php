@@ -26,15 +26,18 @@ Route::get('detail', function () {
 });
 
 Route::get('explore', function () {
-        return view('explore');
-    });
+    return view('explore');
+});
 
 Route::get('formiklan', function () {
-        return view('formiklan');
-    });
+    return view('formiklan');
+});
 Route::get('like', function () {
-        return view('like');
-    });
+    return view('like');
+});
+Route::get('admin', function () {
+    return view('admin');
+});
 
     // Route::post('register', []{
     //     return view('detail');
