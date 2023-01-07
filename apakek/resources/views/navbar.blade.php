@@ -38,7 +38,7 @@
                         {{-- <li><a href="foryou">For You</a></li> --}}
                         {{-- <li><a href="#place">Place</a></li> --}}
                         {{-- <li><a href="explore">Explore</a></li> --}}
-                        <li><a href="#singin">Sign In</a></li>
+                        <li><a href="login">Sign In</a></li>
                         <li class="active">
                             <a href="#daftar">Register</a>
                         </li>

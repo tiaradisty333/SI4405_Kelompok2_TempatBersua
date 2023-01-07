@@ -7,10 +7,6 @@
     scroll-snap-type: y proximity;
 }
 
-/* .semua{
-    overflow-y: auto; */
-/* height: 100vh;
-} */
 
 /* -------------------------------- NAVBAR --------------------------------*/
 .container1 {
@@ -147,7 +143,6 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    /* width: 100%; */
 }
 
 .navbar2 .box-navbar2 .logo2 img {
@@ -384,7 +379,6 @@
 .explore:hover {
     background-color: rgb(84, 84, 84);
     color: #fff;
-    /* text-decoration: none; */
 }
 
 .hr1 {
@@ -663,11 +657,7 @@
     border: none;
     width: 300px;
     height: 60vh;
-    /* margin-top: 33vh; */
-    /* margin-left: 6vh; */
     border-radius: 40px;
-    /* border-bottom-left-radius: 0px;
-    border-bottom-right-radius: 0px; */
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
@@ -681,9 +671,6 @@
     overflow-x: auto;
     overflow-y: hidden;
     white-space: nowrap;
-
-    /* scroll-behavior: smooth;
-    scroll-snap-type: x proximity; */
 }
 
 .addiklan .card .card-title {
@@ -794,8 +781,6 @@ p .reply {
 }
 
 .addkomen {
-    /* position: fixed; */
-    /* height: 5vh; */
     bottom: 0;
 }
 
@@ -987,11 +972,7 @@ p .reply {
     border: none;
     width: 300px;
     height: 60vh;
-    /* margin-top: 33vh; */
-    /* margin-left: 6vh; */
     border-radius: 40px;
-    /* border-bottom-left-radius: 0px;
-    border-bottom-right-radius: 0px; */
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
@@ -1033,14 +1014,99 @@ p .reply {
     display: flex;
     width: 100%;
     height: 100vh;
-    /* background-image: linear-gradient(rgba(84, 83, 83, 0.285), rgba(0, 0, 0, 0.716)), url('/img/bgkopi.jpg');
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-    scroll-snap-align: center; */
 }
 
 /* -------------------------------- like_wishlist --------------------------------*/
+
+/* -------------------------------- PROFILE --------------------------------*/
+.profile{
+    display: flex;
+    width: 100%;
+    height: 100vh;
+}
+/*
+.profile-pic {
+    color: transparent;
+    transition: all 0.3s ease;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    transition: all 0.3s ease;
+  }
+  .profile-pic input {
+    display: none;
+  }
+  .profile-pic img {
+    position: absolute;
+    object-fit: cover;
+    width: 180px;
+    height: 180px;
+    box-shadow: 0 0 10px 0 rgba(255, 255, 255, 0.35);
+    border-radius: 100px;
+    z-index: 0;
+  }
+  .profile-pic .-label {
+    cursor: pointer;
+    height: 180px;
+    width: 180px;
+  }
+  .profile-pic:hover .-label {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: rgba(0, 0, 0, 0.8);
+    z-index: 10000;
+    color: #fafafa;
+    transition: background-color 0.2s ease-in-out;
+    border-radius: 100px;
+    margin-bottom: 0;
+  }
+  .profile-pic span {
+    display: inline-flex;
+    padding: 0.2em;
+    height: 2em;
+  } */
+
+  .profile-pic {
+    width: 200px;
+    max-height: 200px;
+    display: inline-block;
+}
+
+.file-upload {
+    display: none;
+}
+.circle {
+    border-radius: 100% !important;
+    overflow: hidden;
+    width: 200px;
+    height: 200px;
+    border: 2px solid rgba(255, 255, 255, 0.2);
+}
+.circle img {
+    max-width: 100%;
+    height: auto;
+}
+.p-image {
+    margin-top: -5vh;
+    margin-left: 13vw;
+    color: #666666;
+    transition: all .3s cubic-bezier(.175, .885, .32, 1.275);
+}
+.p-image:hover {
+  transition: all .3s cubic-bezier(.175, .885, .32, 1.275);
+}
+.upload-button {
+  font-size: 2vmax;
+
+}
+
+.upload-button:hover {
+  transition: all .3s cubic-bezier(.175, .885, .32, 1.275);
+  color: #999;
+}
+/* -------------------------------- PROFILE --------------------------------*/
 
 /* -------------------------------- ADMIN --------------------------------*/
 .administrator{
@@ -1048,5 +1114,17 @@ p .reply {
     width: 100%;
     height: 100%;
     background-color: rgb(98, 94, 94);
+}
+
+.tempat {
+    border-radius: 100%;
+    width: 50px;
+    height: 50px;
+    border: 2px solid rgba(255, 255, 255, 0.2);
+}
+
+.tempat img {
+    max-width: 100%;
+    height: auto;
 }
 /* -------------------------------- ADMIN --------------------------------*/

@@ -52,7 +52,7 @@
 
                     <?php if (!isset($_SESSION['id'])) { ?>
                     <div class="d-grid gap-2 d-md-flex justify-content-md-end">
-                        <a href="Quiz_2_login_Syeikh Bagir.php"><button class="btn me-md-3 btnlogin" type="button"><svg
+                        <a href=""><button class="btn me-md-3 btnlogin" type="button"><svg
                                     xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
                                     class="bi bi-person" viewBox="0 0 16 16">
                                     <path

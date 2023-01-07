@@ -16,6 +16,9 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('home');
 });
+Route::get('login', function () {
+    return view('login');
+});
 
 Route::get('foryou', function () {
     return view('foryou');
@@ -32,9 +35,15 @@ Route::get('explore', function () {
 Route::get('formiklan', function () {
     return view('formiklan');
 });
+
 Route::get('like', function () {
     return view('like');
 });
+
+Route::get('profile', function () {
+    return view('profile');
+});
+
 Route::get('admin', function () {
     return view('admin');
 });

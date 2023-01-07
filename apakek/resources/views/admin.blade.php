@@ -127,9 +127,9 @@
                         <div class="scrollY">
                             <?php for($i=0; $i<15; $i++){ ?>
                             <div class="row mb-3">
-                                <div class="col-lg-2 ms-2"> <a href="#">
-                                        <img src="img/kopi1.png" class="align-self-center mr-1 imgreview"
-                                            style="border-radius: 100px; background-position: center; "></a>
+                                <div class="col-lg-2 ms-2">
+                                        <img src="img/bgfood.jpg"
+                                            style="border-radius: 100%; width: 50px; height: 50px; ">
                                 </div>
                                 <div class="col-lg ms-2 mt-3">
                                     <p class="user"><b>[nama orang]</b>
