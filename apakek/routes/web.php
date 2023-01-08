@@ -40,8 +40,9 @@ Route::get('detail', function () {
 });
 
 Route::get('explore', function () {
-    $iklanBerbayar = Resto::where('category', 'berbayar')->get();
-    $iklan = Resto::all();
+    $iklanBerbayar = Resto::where('category', 'berbayar')->where('status','approved')->get();
+    $iklan = Resto::where('status', 'approved')->get();
+    // $iklan = Resto::where('status', 'waiting')->get();
     return view('explore',compact('iklanBerbayar','iklan'));
 });
 
