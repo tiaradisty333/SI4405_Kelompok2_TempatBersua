@@ -13,7 +13,7 @@
                     <hr class="hr1">
                 </div>
                 <div class="col-6" align="center">
-                    <h1>Wishlist Kamu Di Tempat Bersua</h1><br>
+                    <h1>Your Wishlist At Tempat Bersua</h1><br>
                 </div>
                 <div class="col">
                     <hr class="hr1">

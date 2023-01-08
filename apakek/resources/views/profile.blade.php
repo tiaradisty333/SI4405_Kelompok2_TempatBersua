@@ -1,4 +1,5 @@
-@include('navbar2')
+@extends('navbar2')
+@section('content')
 
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet">
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js"></script>
@@ -10,8 +11,9 @@
         <br>
         <br>
         <p class="text-center fw-bold mt-3" style="font-size: 32px;">Profile</p>
-
-        <form action="." method="POST">
+        <form action="/update/{{Auth::user()->id}}" method="POST" enctype="multipart/form-data">
+            @csrf
+            @method('put')
             <div class="row mx-3">
                 <div class="col">
                     {{-- <div class="profile-pic">
@@ -24,28 +26,32 @@
                       </div> --}}
                       <div class="row">
                         <div class="small-12 medium-2 large-2 columns">
-                          <div class="circle ms-5">
-                            <img class="profile-pic" src="https://t3.ftcdn.net/jpg/03/46/83/96/360_F_346839683_6nAPzbhpSkIpb8pmAwufkC7c5eD7wYws.jpg">
-
+                          <div class="ms-5">
+                            @if(Auth::user()->foto != null)
+                            <img class="profile-pic circle" src="ava/{{Auth::user()->foto}}">
+                            @else
+                            <img class="profile-pic circle" src="https://t3.ftcdn.net/jpg/03/46/83/96/360_F_346839683_6nAPzbhpSkIpb8pmAwufkC7c5eD7wYws.jpg">
+                            @endif
                           </div>
                           <div class="p-image">
                             <i class="fa fa-camera upload-button"></i>
-                             <input class="file-upload" type="file" accept="image/*"/>
+
+                             <input class="file-upload" type="file" name="foto" accept="image/*"/>
                           </div>
                        </div>
                      </div>
                 </div>
                 <div class="col-9">
                     <div class="mb-3 row">
-                        <label for="staticEmail" class="col-sm-2 col-form-label">Nama</label>
+                        <label for="staticEmail" class="col-sm-2 col-form-label">Email</label>
                         <div class="col-sm-10">
-                            <input type="text" class="form-control" id="staticEmail" name="namaregis" value="">
+                            <input type="text" class="form-control" id="staticEmail" name="namaregis" value="{{ Auth::user()->email }}">
                         </div>
                     </div>
                     <div class="mb-3 row">
                         <label for="staticEmail" class="col-sm-2 col-form-label">Username</label>
                         <div class="col-sm-10">
-                            <input type="text" class="form-control" id="staticEmail" name="username" value="">
+                            <input type="text" class="form-control" id="staticEmail" name="username" value="{{ Auth::user()->username }}">
                         </div>
                     </div>
                     <hr>
@@ -61,7 +67,7 @@
                             <input type="password" class="form-control" id="staticEmail" name="pwbaru">
                         </div>
                     </div>
-                    <button type="submit" name="update" class="btn btn-primary">Update</button>
+                    <button type="submit" class="btn btn-primary">Update</button>
                 </div>
             </div>
 
@@ -99,3 +105,4 @@ $(".upload-button").on('click', function() {
 });
 });
 </script>
+@endsection

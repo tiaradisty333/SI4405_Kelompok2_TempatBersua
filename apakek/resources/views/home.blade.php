@@ -44,12 +44,12 @@
             <p><b>Searching For Caffe ? <b></p>
         </div>
         <div class="kosu">
-            <p>Apa yang ingin kamu coba saat ini ?
-                sekarang lagi musimnya kopi susu.
-                cobalah kopi susu pilihan dari kami</p>
+            <p>What Would You Like To Try Right Now?
+                Now It's Coffee Milk Season.
+                Try Our Selection Of Coffee Milk</p>
         </div>
         <a href="#"><button class="carikopi">
-                Kopi Susu Enak
+                Coffee Milk
             </button></a>
         <a href="#"><button class="explore">
                 Explore</button></a>
@@ -66,50 +66,14 @@
             <p><b>Save Plaves You Liked<b></p>
         </div>
         <div class="wishlist">
-            <p>Pilih Tempat Yang Kamu Sukai Tanpa Perlu Mencari Nya Kembali</p>
+            <p>Choose The Place You Like Without Having To Look For It Again</p>
         </div>
         <a href="#"><button class="like">
                 Likes
             </button></a>
     </div>
 
-    <div class="bg4" id="daftar">
-        <div class="card">
-            <center>
-                <div class="cardheader">
-
-                    <img src="img/logo.png">
-                    <br>
-                    <h1>Welcome To Tempat Bersua</h1>
-                    <!-- <br> -->
-                    <p>Find Food And Places</p>
-                </div>
-            </center>
-            <br>
-            <hr>
-            <form action="/register" method="POST">
-                <label for="username" class="label">Username</label>
-                <input type="text" class="kotakform" id="" name="kotakform">
-
-                <label for="password" class="label">Password</label>
-                <input type="password" class="kotakform" id="" name="kotakform">
-
-                <label for="name" class="label">Nickname</label>
-                <input type="text" class="kotakform" id="" name="kotakform">
-
-                <label for="email" class="label">Email</label>
-                <input type="email" class="kotakform" id="" name="kotakform">
-
-                <button class="continue" type="submit">Continue</button>
-                <p align="center" style="margin-top: 5px; font-size: 18px;">Or</p>
-                <button class="login" type="submit">Login</button>
-                <p align="center"
-                    style="font-size: 11px; font-weight: 300; width: 300px; margin-left: 65px; margin-top: 10px;">by
-                    continuing, you agree to Tempat Bersua <b>Terms of service</b> and acknowledge you've read
-                    our<b>privacy policy. notice at collection.</b></p>
-            </form>
-        </div>
-    </div>
+   
 </div>
 
 

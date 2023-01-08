@@ -1,5 +1,5 @@
-@include('navbar2')
-
+@extends('navbar2')
+@section('content')
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet">
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js"></script>
 <script async src="https://instagram.com/static/bundles/es6/EmbedSDK.js/47c7ec92d91e.js"></script>
@@ -8,63 +8,67 @@
     <div class="container-fluid iklan m-5">
         <div class="row-lg-12">
             <div class="col">
-                <h1 class="mt-5 text-white" align="center">Pasang Iklan</h1>
+                <h1 class="mt-5 text-white" align="center">Advertise</h1>
                 <hr style="border-top: 3px solid white; opacity: 1;">
-                <form action="" method="" enctype="multipart/form-data" class="form_iklan">
+                <form action="/iklanUser" method="POST" enctype="multipart/form-data" class="form_iklan">
+                    @csrf
                     <div class="card mx-auto " style="height: 70vh; width: 80vw;">
                         <div class="card-body scrollY">
                             <div class="mb-3 mt-2">
-                                <label for="formGroupExampleInput" class="form-label">Nama Cafe Atau Resto</label>
+                                <label for="formGroupExampleInput" class="form-label">Cafe Or Resto Name</label>
                                 <input type="text" class="form-control" id="formGroupExampleInput"
                                     placeholder="Tempat Bersua Cafe..." name="nama_cafe">
                             </div>
-
                             <div class="mb-3">
-                                <label for="formGroupExampleInput" class="form-label">Lokasi Cafe Atau Resto</label>
+                                <label for="formGroupExampleInput" class="form-label">District</label>
                                 <input type="text" class="form-control" id="formGroupExampleInput"
-                                    placeholder="Jalan Tempat Bersua, Bandung..." name="lokasi_cafe">
+                                    placeholder="Buahbatu" name="kawasan">
+                            </div>
+                            <div class="mb-3">
+                                <label for="formGroupExampleInput" class="form-label">Address</label>
+                                <textarea type="text" class="form-control" id="formGroupExampleInput"
+                                    placeholder="Jalan Tempat Bersua, Bandung..." name="lokasi_cafe"></textarea>
                             </div>
                             <div class="row">
 
                                 <div class="col-md-6">
-                                    <label for="inputEmail4" class="form-label">Jam Buka</label>
-                                    <input type="time" class="form-control" id="inputEmail4">
+                                    <label for="inputEmail4" class="form-label">Open Time</label>
+                                    <input type="time" class="form-control" id="inputEmail4" name="waktubuka">
                                 </div>
                                 <div class="col-md-6">
-                                    <label for="inputPassword4" class="form-label">Jam Tutup</label>
-                                    <input type="time" class="form-control" id="inputPassword4">
+                                    <label for="inputPassword4" class="form-label">Closed Time</label>
+                                    <input type="time" class="form-control" id="inputPassword4" name="waktututup">
                                 </div>
                             </div>
 
-                            <label for="inputPassword4" class="form-label mt-3">Rentang Harga</label>
+                            <label for="inputPassword4" class="form-label mt-3">Price Range</label>
                             <div class="row">
 
                                 <div class="col-md-6">
-                                    <label for="inputEmail4" class="form-label">Mulai Dari</label>
+                                    <label for="inputEmail4" class="form-label">Start From</label>
                                     <div class="input-group mb-2">
                                         <span class="input-group-text">Rp.</span>
-                                        <input type="text" class="form-control"
+                                        <input type="text" class="form-control" name="harga1"
                                             aria-label="Amount (to the nearest dollar)">
                                         <span class="input-group-text">.00</span>
                                     </div>
                                 </div>
                                 <div class="col-md-6">
-                                    <label for="inputPassword4" class="form-label">Hingga</label>
+                                    <label for="inputPassword4" class="form-label">Up To</label>
                                     <div class="input-group mb-2">
                                         <span class="input-group-text">Rp.</span>
-                                        <input type="text" class="form-control"
+                                        <input type="text" class="form-control" name="harga2"
                                             aria-label="Amount (to the nearest dollar)">
                                         <span class="input-group-text">.00</span>
                                     </div>
                                 </div>
                             </div>
-                            <label for="inputPassword4" class="form-label mt-3 mb-0">Input Foto</label>
+                            <label for="inputPassword4" class="form-label mt-3 mb-0">Add Photo's</label>
 
                             <div class="input-group mt-3 mb-3">
                                 <input class="form-control" id="foto_thumb" name="foto_thumb" type="file"
                                     accept=".jpg, .png, .jpeg">
-                                <label class="input-group-text" for="inputGroupFile02" style="width: 10vw;">Foto
-                                    Thumbnail</label>
+                                <label class="input-group-text" for="inputGroupFile02" style="width: 10vw;">Thumbnail</label>
                             </div>
                             <div class="prev-thumb"></div>
 
@@ -72,25 +76,36 @@
                             <div class="input-group mt-3 mb-3">
                                 <input class="form-control" id="foto_slide" name="foto_slide" type="file" multiple
                                     accept=".jpg, .png, .jpeg">
-                                <label class="input-group-text" for="inputGroupFile02" style="width: 10vw;">Foto
-                                    Slide</label>
+                                <label class="input-group-text" for="inputGroupFile02" style="width: 10vw;">Content</label>
                             </div>
                             <div class="prev-slide"></div>
 
                             <div class="input-group mt-3 mb-3">
                                 <input class="form-control" id="foto_menu" name="foto_menu" type="file" multiple
                                     accept=".jpg, .png, .jpeg">
-                                <label class="input-group-text" for="inputGroupFile02" style="width: 10vw;">Foto
-                                    Menu</label>
+                                <label class="input-group-text" for="inputGroupFile02" style="width: 10vw;">Menu's</label>
                             </div>
                             <div class="prev-menu"></div>
+
+                            <div class="form-check mt-3">
+                                <input class="form-check-input" type="radio" name="kategori" value="gratis"
+                                    id="flexRadioDefault2" checked>
+                                <label class="form-check-label" for="flexRadioDefault2">
+                                    Free
+                                </label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" name="kategori" value="berbayar"
+                                    id="flexRadioDefault1">
+                                <label class="form-check-label" for="flexRadioDefault1">
+                                    Boost Ads (Rp.100.000)
+                                </label>
+                            </div>
 
                         </div>
 
                         <div class="d-grid gap-2 mx-4 mt-3 mb-3">
-                            <button class="btn btn-primary btn-success" type="submit" name="post">Pasang
-                                Iklan
-                                Sekarang</button>
+                            <button class="btn btn-primary btn-success" type="submit" name="post">Advertise Now</button>
                         </div>
                     </div>
 
@@ -191,3 +206,4 @@
         }
     });
 </script>
+@endsection

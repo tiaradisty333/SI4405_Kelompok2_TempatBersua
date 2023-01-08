@@ -1,4 +1,5 @@
-@include('navbar2')
+@extends('navbar2')
+@section('content')
 
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet">
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js"></script>
@@ -7,7 +8,7 @@
 <div class="bg5">
     <div class="container-fluid mx-5 mt-5">
         <div class="pilihan">
-            Pilihan Tempat Bersua Untuk [namauser], Di <a class="btnlokasi" href="#">[namalokasi]
+            Choice Of Tempat Bersua For <b>{{ Auth::user()->username }}</b>, At <a class="btnlokasi" href="#">[namalokasi]
             </a>
 
         </div>
@@ -42,7 +43,7 @@
                     {{-- <div class="rekomen">
                 </div> --}}
                     <center>
-                        <p class="rekomen" align="center">Rekomendasi Dari Tempat Bersua</p>
+                        <p class="rekomen" align="center">Recommendation From Tempat Bersua</p>
                     </center>
                     <div class="artikel">
                         <div class="">
@@ -66,25 +67,50 @@
         </div>
         <br><br>
         <div class="row-lg-12">
-            <h1 class="addiklan_h1 mt-5 mb-4">Pasang Iklan Di Tempat Bersua !!!</h1>
+            <h1 class="addiklan_h1 mt-5 mb-4">Advertise On Tempat Bersua !!!</h1>
             <div class="col-lg-12 pe-4 pt-3">
-                <div class="mb-5" style="width: 100%;">
+                <div class="mb-5 mx-4" style="width: 100%;">
                     <div class="row row-cols-1 row-cols-md-4">
-                        <?php $url = './img/kopi2.png';
-                        for($i=0; $i<4; $i++){ ?>
+
                         <div class="col">
                             <a href="formiklan" style="text-decoration: none;">
-                                <div class="addiklan cards" style="background-image: url('<?= $url ?>');">
-                                    <center>
-                                        <h5 class="addiklan card-title pt-2" align="center">Waroeng Babagi</h5>
-                                    </center>
+                                <div class="addiklan cards ads" style="background-image:linear-gradient(rgba(84, 83, 83, 0.425), rgba(69, 66, 66, 0.814)), url('img/addiklan.png');">
+                                    {{-- <center>
+                                        <h5 class="addiklan card-title pt-2" align="center" style="color: rgba(255, 255, 255, 0.488)">Sekala Coffe</h5>
+                                    </center> --}}
                                 </div>
                             </a>
                         </div>
-                        <?php } ?>
+
+                        <div class="col">
+                            <div class="addiklan cards" style="background-image: linear-gradient(rgba(63, 60, 60, 0.829), rgba(0, 0, 0, 0)), url('img/tokjaw.jpg');">
+                                <center>
+                                    <h5 class="addiklan card-title pt-2" align="center">Kopi Toko Jawa</h5>
+                                </center>
+                            </div>
+                        </div>
+
+                        <div class="col">
+                            <div class="addiklan cards" style="background-image: linear-gradient(rgba(63, 60, 60, 0.829), rgba(0, 0, 0, 0)), url('img/koffiebraga.jpg');">
+                                <center>
+                                    <h5 class="addiklan card-title pt-2" align="center">Koffie Braga</h5>
+                                </center>
+                            </div>
+                        </div>
+
+                        <div class="col">
+                            <div class="addiklan cards" style="background-image: linear-gradient(rgba(63, 60, 60, 0.829), rgba(0, 0, 0, 0)), url('img/yellowtruck.jpg');">
+                                <center>
+                                    <h5 class="addiklan card-title pt-2" align="center">Yellow Truck</h5>
+                                </center>
+                            </div>
+                        </div>
+
+
                     </div>
                 </div>
             </div>
         </div>
     </div>
 </div>
+@endsection

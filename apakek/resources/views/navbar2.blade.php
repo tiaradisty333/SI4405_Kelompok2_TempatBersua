@@ -40,44 +40,44 @@
                         <a href="explore"><img src="img/logo.png"></a>
                     </div>
                     <ul class="menu2">
-                        <li><a href="foryou">For You</a></li>
-                        <li><a href="like">Like</a></li>
-                        <li><a href="explore">Explore</a></li>
+                        <li><a class="nav-link" href="foryou">For You</a></li>
+                        <li><a class="nav-link" href="like">Like</a></li>
+                        <li><a class="nav-link" href="explore">Explore</a></li>
                         </li>
                     </ul>
                     <form class="d-flex" role="search">
                         {{-- <input class="me-4 searchnav" type="search" placeholder="Search" aria-label="Search"> --}}
                         <button class="searchnav" type="submit">Search</button>
                     </form>
-
-                    <?php if (!isset($_SESSION['id'])) { ?>
-                    <div class="d-grid gap-2 d-md-flex justify-content-md-end">
-                        <a href=""><button class="btn me-md-3 btnlogin" type="button"><svg
-                                    xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
-                                    class="bi bi-person" viewBox="0 0 16 16">
-                                    <path
-                                        d="M8 8a3 3 0 1 0 0-6 3 3 0 0 0 0 6zm2-3a2 2 0 1 1-4 0 2 2 0 0 1 4 0zm4 8c0 1-1 1-1 1H3s-1 0-1-1 1-4 6-4 6 3 6 4zm-1-.004c-.001-.246-.154-.986-.832-1.664C11.516 10.68 10.289 10 8 10c-2.29 0-3.516.68-4.168 1.332-.678.678-.83 1.418-.832 1.664h10z" />
-                                </svg> Login</button></a>
-                    </div>
-
-                    <?php } elseif (isset($_SESSION['id'])) { ?>
                     <div class="dropdown">
-                        <button class="btn btn-secondary dropdown-toggle me-md-5" type="button"
-                            data-bs-toggle="dropdown" aria-expanded="false">
-                            <?= $data['username'] ?>
-                        </button>
+                        <a class="nav-link dropdown-toggle text-light" type="button" data-bs-toggle="dropdown"
+                            aria-expanded="false">
+                            @if(Auth::user()->foto != null)
+                            <img src="ava/{{Auth::user()->foto}}" class="ava" >
+                            @else
+                            <img class="ava" src="https://t3.ftcdn.net/jpg/03/46/83/96/360_F_346839683_6nAPzbhpSkIpb8pmAwufkC7c5eD7wYws.jpg">
+                            @endif
+                            {{ Auth::user()->username }}
+                        </a>
                         <ul class="dropdown-menu">
-                            <li><a class="dropdown-item" href="profile.php">Profile</a></li>
-                            <li><a class="dropdown-item" href="logout.php">Logout</a></li>
+                            <li><a class="dropdown-item" href="profile">Profile</a></li>
+                            <li><a class="dropdown-item" href="#" onclick="event.preventDefault();document.getElementById('logout-btn').submit();">Logout</a></li>
+                            <form id="logout-btn" action="/logout/{{Auth::user()->id}}" method="POST">
+                                {{csrf_field()}}
+                                @method('put')
+                            </form>
                         </ul>
                     </div>
-                    <?php } ?>
+
+
                 </div>
             </div>
         </div>
 
 
     </header>
+    @yield('content')
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script>
 </body>
 
 </html>

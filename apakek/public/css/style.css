@@ -505,14 +505,14 @@
     position: absolute;
     border-radius: 50px;
     width: 27%;
-    height: 80%;
+    height: 85%;
     margin-left: 60%;
-    margin-top: 8%;
+    margin-top: 5%;
     box-shadow: 8px 8px 10px rgb(39, 38, 38);
 }
 
 .cardheader img {
-    width: 30px;
+    width: 3vh;
     height: auto;
     margin-top: 20px;
 }
@@ -555,7 +555,7 @@
 }
 
 .continue {
-    margin-top: 10px;
+    margin-top: 20px;
     margin-left: 90px;
     width: 250px;
     height: 30px;
@@ -569,7 +569,7 @@
 }
 
 .login {
-    margin-top: 5px;
+    margin-top: -20px;
     margin-left: 90px;
     width: 250px;
     height: 30px;
@@ -1072,17 +1072,19 @@ p .reply {
     width: 200px;
     max-height: 200px;
     display: inline-block;
+
 }
 
 .file-upload {
     display: none;
 }
 .circle {
-    border-radius: 100% !important;
+    border-radius: 100%;
     overflow: hidden;
     width: 200px;
     height: 200px;
     border: 2px solid rgba(255, 255, 255, 0.2);
+    object-fit: cover;
 }
 .circle img {
     max-width: 100%;
@@ -1126,5 +1128,11 @@ p .reply {
 .tempat img {
     max-width: 100%;
     height: auto;
+}
+
+.ava{
+width: 50px;
+height: 50px;
+border-radius: 100%;
 }
 /* -------------------------------- ADMIN --------------------------------*/

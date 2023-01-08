@@ -1,7 +1,6 @@
-@include('navbar2')
-
+@extends('navbar2')
+@section('content')
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet">
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js"></script>
 <script async src="https://instagram.com/static/bundles/es6/EmbedSDK.js/47c7ec92d91e.js"></script>
 
 <div class="detailcafe">
@@ -58,19 +57,19 @@
                         <div class="row" style="height: 22.5vh;">
                             <table class="table table-borderless">
                                 <tr>
-                                    <th scope="row" style="width: 9vw;">Rating ☆</th>
+                                    <th scope="row" style="width: 8vw;">Rating ☆</th>
                                     <td>sasa</td>
                                 </tr>
                                 <tr>
-                                    <th scope="row" style="width: 9vw;">Lokasi</th>
+                                    <th scope="row" style="width: 8vw;">Location</th>
                                     <td>lo</td>
                                 </tr>
                                 <tr>
-                                    <th scope="row" style="width: 9vw;">Jam Buka</th>
+                                    <th scope="row" style="width: 8vw;">Open</th>
                                     <td>sasa</td>
                                 </tr>
                                 <tr>
-                                    <th scope="row" style="width: 9vw;">Range Harga</th>
+                                    <th scope="row" style="width: 8vw;">Price</th>
                                     <td>sasa</td>
                                 </tr>
                             </table>
@@ -81,7 +80,7 @@
                     <!-- Button trigger modal -->
                     <button type="button" class="btn btn-success mx-auto mb-2" data-bs-toggle="modal"
                         data-bs-target="#menu">
-                        Lihat Menu
+                        Menu's
                     </button>
 
                     <!-- Modal -->
@@ -168,8 +167,7 @@
                                                             <div class="row">
                                                                 <div class="col">
                                                                     <center>
-                                                                        <h4 style="font-size: 1.3vmax;">Berikan
-                                                                            Penilaian Mu</h4>
+                                                                        <h4 style="font-size: 1.3vmax;">Give Your Rating</h4>
 
                                                                         <div class="container-rating">
                                                                             <div class="feedback">
@@ -469,8 +467,7 @@
                                                                 <div class="col">
                                                                     <div class="mb-3 mt-3">
                                                                         <label for="formGroupExampleInput"
-                                                                            class="form-label">Apa Yang Bikin Kamu
-                                                                            Puas?</label>
+                                                                            class="form-label">What Makes You Satisfied?</label>
                                                                         <textarea name="komen_desc" type="text" class="form-control" id="komen_desc" rows="4" maxlength="500"></textarea>
                                                                     </div>
 
@@ -511,7 +508,7 @@
                 <hr class="hr1">
             </div>
             <div class="col-6" align="center">
-                <h1>Rekomendasi Tempat Bersua</h1><br>
+                <h1>Recommendation From Tempat Bersua</h1><br>
             </div>
             <div class="col">
                 <hr class="hr1">
@@ -554,6 +551,7 @@
     </div>
 
     {{-- </div> --}}
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script>
 
 
     <script>
@@ -601,3 +599,4 @@
             }
         });
     </script>
+@endsection
