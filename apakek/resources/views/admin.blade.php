@@ -194,7 +194,7 @@
                 <div class="col-6">
                     <div class="row-lg-12">
                         <div class="col">
-                            <h1 class="mt-5" align="center">Advertise</h1>
+                            <h1 class="mt-5" align="center">Add Resto</h1>
                             <hr style="border-top: 3px solid black;">
                             <form action="/iklanAdmin" method="POST" enctype="multipart/form-data" class="form_iklan">
                                 @csrf
