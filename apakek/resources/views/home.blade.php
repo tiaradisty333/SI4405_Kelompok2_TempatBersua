@@ -41,15 +41,15 @@
         <img class="kopi4" src="img/kopi4.png">
 
         <div class="kopi">
-            <p><b>Searching For Caffe ? <b></p>
+            <p><b>Searching For Cafe ?<b></p>
         </div>
         <div class="kosu">
             <p>What Would You Like To Try Right Now?
-                Now It's Coffee Milk Season.
-                Try Our Selection Of Coffee Milk</p>
+                It's Iced coffee Season!
+                Try Our Selection Of The Best Iced Coffee in Town.</p>
         </div>
         <a href="#"><button class="carikopi">
-                Coffee Milk
+                Iced Coffee
             </button></a>
         <a href="#"><button class="explore">
                 Explore</button></a>
@@ -63,7 +63,7 @@
         <a href="#"><img class="cafe4" src="img/cafe4.png"></a>
 
         <div class="cafe">
-            <p><b>Save Plaves You Liked<b></p>
+            <p><b>Save Places You Liked<b></p>
         </div>
         <div class="wishlist">
             <p>Choose The Place You Like Without Having To Look For It Again</p>
