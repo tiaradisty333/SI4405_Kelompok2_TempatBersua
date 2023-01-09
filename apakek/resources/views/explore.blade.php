@@ -13,11 +13,13 @@
                         {{-- <div class="row row-cols-1 row-cols scrollBar"> --}}
                         @foreach ($iklanBerbayar as $data)
                         <div class="col">
+                            <a href="/detail/{{ $data->id }}" class="text-decoration-none">
                             <div class="expiklan expcards" style="background-image: url('gambar_resto/{{$data->thumbnail}}')">
                                 <center>
-                                    <h5 class="expiklan card-title pt-2">{{$data->namaresto}}</h5>
+                                    <h5 class="expiklan card-title pt-2 ">{{$data->namaresto}}</h5>
                                 </center>
                             </div>
+                            </a>
                         </div>
                         @endforeach
                     </div>
@@ -47,12 +49,12 @@
         <div class="row row-cols-1 row-cols-md-5">
             @foreach ($iklan as $data)
             <div class="col px-3">
-                <a href="/detail" style="text-decoration: none;">
+                <a href="/detail/{{ $data->id }}" style="text-decoration: none;">
                     <div class="card mb-3" style="border-radius:10px; border:none">
-                        <img src="gambar_resto/{{$data->thumbnail}}" class="card-img-top" height="150" alt="..." style="border-radius: 10px">
-                        <div class="card-body" style="height: 10vh">
+                        <img src="{{ asset("gambar_resto/".$data->thumbnail) }}" class="card-img-top" height="150" alt="..." style="border-radius: 10px">
+                        <div class="card-body" style="height: 17vh">
                             <center>
-                                <p class="card-title" style="font-size: 1.1vmax; color:black;">{{$data->namaresto}}
+                                <p class="card-title fw-semibold" style="font-size: 1.1vmax; color:black; margin-top: -1.5vh;">{{$data->namaresto}}
                                 </p>
                                 <p class="card-text" style="font-size: 0.9vmax; color:black;">{{$data->address}}</p>
                             </center>

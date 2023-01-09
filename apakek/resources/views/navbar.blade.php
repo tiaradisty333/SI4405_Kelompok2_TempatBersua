@@ -48,6 +48,8 @@
             </div>
         </div>
 
+        @yield('content')
+
         {{-- <script src="java/script.js"></script> --}}
 </body>
 

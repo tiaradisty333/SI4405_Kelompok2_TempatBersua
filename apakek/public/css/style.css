@@ -625,7 +625,7 @@
     box-shadow: 8px 8px 10px grey;
     border-radius: 10px;
     padding: 4vh;
-    height: 77vh;
+    min-height: 77vh;
 }
 
 .rekomen {
@@ -931,6 +931,7 @@ p .reply {
     background-color: #ffcb91;
 }
 
+
 /* -------------------------------- DETAIL CAFE --------------------------------*/
 
 
@@ -1134,5 +1135,12 @@ p .reply {
 width: 50px;
 height: 50px;
 border-radius: 100%;
+}
+
+#btn-like.btn-light:hover{
+    background-color: #FF0000;
+}
+#btn-unlike.btn-danger:hover{
+    background-color: #e5e5e5;
 }
 /* -------------------------------- ADMIN --------------------------------*/

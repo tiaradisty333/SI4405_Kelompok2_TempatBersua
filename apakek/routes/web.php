@@ -31,9 +31,13 @@ Route::get('/', function () {
 
 
 
-Route::get('/foryou', function () {
-    return view('foryou');
-});
+// Route::get('/foryou', function () {
+//     return view('foryou');
+// });
+Route::get('/foryou',[RestoController::class, 'index']);
+Route::get('/foryou/{district}',[RestoController::class, 'show']);
+
+
 
 Route::get('detail', function () {
     return view('detail');
@@ -50,9 +54,9 @@ Route::get('formiklan', function () {
     return view('formiklan');
 });
 
-Route::get('like', function () {
-    return view('like');
-});
+// Route::get('like', function () {
+//     return view('like');
+// });
 
 Route::get('profile', function () {
     return view('profile');
@@ -83,6 +87,11 @@ Route::post('/iklanAdmin', [RestoController::class, 'store']);
 Route::post('/iklanUser', [RestoController::class, 'storeuser']);
 Route::post('/ubahStatusPost/{id}', [RestoController::class,'ubahStatusPost']);
 Route::post('/ubahStatusDecline/{id}', [RestoController::class,'ubahStatusDecline']);
-// Route::get('/detail/{id}', [RestoController::class, 'showDetail']);
+Route::get('/detail/{id}', [RestoController::class, 'showDetail']);
+Route::post('/liked/{id}',[RestoController::class, 'like']);
+Route::delete('/unliked/{id}',[RestoController::class, 'unlike']);
+Route::get('/like', [RestoController::class, 'showLike']);
+Route::post('/updateResto/{id}',[RestoController::class, 'updateResto']);
+Route::delete('/deleteResto/{id}',[RestoController::class,'deleteResto']);
 
 

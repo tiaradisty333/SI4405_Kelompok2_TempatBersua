@@ -26,7 +26,7 @@
         href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100;200;300;400;500;600;700;800;900&display=swap"
         rel="stylesheet">
     <!-- CSS -->
-    <link rel="stylesheet" href="css/style.css" />
+    <link rel="stylesheet" href="{{ asset('css/style.css') }}" />
     <title>Tempat Bersua</title>
 </head>
 
@@ -37,7 +37,7 @@
             <div class="container2">
                 <div class="box-navbar2">
                     <div class="logo2">
-                        <a href="explore"><img src="img/logo.png"></a>
+                        <a href="explore"><img src="{{ asset('img/logo.png') }}"></a>
                     </div>
                     <ul class="menu2">
                         <li><a href="foryou">For You</a></li>
@@ -86,26 +86,234 @@
                         </div>
                         <div class="scrollY" style="height: 65vh;">
                             <div class="row row-cols-1 row-cols-md-4">
-                            @foreach ($resto as $data)
-                                <div class="col px-3">
-                                    <a href="#" style="text-decoration: none;">
-                                        <div class="card mb-3" style="height: 20rem;"
-                                            style="border-radius:10px; box-shadow: -5px 5px 10px rgba(128, 128, 128, 0.63);">
-                                            <img src="gambar_resto/{{ $data->thumbnail }}" height="150" class="card-img-top" alt="...">
-                                            <div class="card-body">
-                                                <center>
-                                                    <p class="card-title" style="font-size: 1.1vmax; color:black;">
-                                                        <b>{{ $data->namaresto }}</b>
-                                                    </p>
-                                                    <p class="card-text" style="font-size: 0.9vmax; color:black;">{{$data->address}}</p>
-                                                </center>
-                                                <a href="#" class="btn btn-primary text-white mt-3">Edit</a>
-                                                <a href="#" class="btn btn-danger text-white mt-3">Delete</a>
+                                @foreach ($resto as $data)
+                                    <div class="col px-3">
+                                        <a href="#" style="text-decoration: none;">
+                                            <div class="card mb-3" style="height: 20rem;"
+                                                style="border-radius:10px; box-shadow: -5px 5px 10px rgba(128, 128, 128, 0.63);">
+                                                <img src="{{ asset('gambar_resto/' . $data->thumbnail) }}"
+                                                    height="150" class="card-img-top" alt="...">
+                                                <div class="card-body">
+                                                    <center>
+                                                        <p class="card-title" style="font-size: 1.1vmax; color:black;">
+                                                            <b>{{ $data->namaresto }}</b>
+                                                        </p>
+                                                        <p class="card-text" style="font-size: 0.9vmax; color:black;">
+                                                            {{ $data->address }}</p>
+                                                    </center>
+                                                    {{-- <a href="#" class="btn btn-primary text-white mt-3">Edit</a> --}}
+                                                    <!-- Button trigger modal -->
+                                                    <form action="/deleteResto/{{ $data->id }}" method="POST">
+                                                        @csrf
+                                                        @method('delete')
+                                                        <button type="button" class="btn btn-primary mt-3"
+                                                            data-bs-toggle="modal"
+                                                            data-bs-target="#exampleModal{{ $data->id }}">
+                                                            Edit
+                                                        </button>
+                                                        <button type="submit"
+                                                            class="btn btn-danger text-white mt-3">Delete</button>
+                                                    </form>
+                                                    <!-- Modal -->
+                                                    <div class="modal fade" id="exampleModal{{ $data->id }}""
+                                                        tabindex="-1" aria-labelledby="exampleModalLabel"
+                                                        aria-hidden="true">
+                                                        <div class="modal-dialog modal-fullscreen-lg-down modal-dialog-scrollable"
+                                                            style="margin-top: 15vh">
+                                                            <div class="modal-content">
+                                                                {{-- <div class="modal-header">
+                                                                    <h1 class="modal-title fs-5" id="exampleModalLabel">
+                                                                        Modal title</h1>
+                                                                    <button type="button" class="btn-close"
+                                                                        data-bs-dismiss="modal"
+                                                                        aria-label="Close"></button>
+                                                                </div> --}}
+                                                                <div class="modal-body">
+                                                                    <form action="/updateResto/{{ $data->id }}"
+                                                                        method="POST" enctype="multipart/form-data"
+                                                                        class="form_iklan">
+                                                                        @csrf
+                                                                        <div class="mb-3 mt-2">
+                                                                            <label for="formGroupExampleInput"
+                                                                                class="form-label">Cafe Or Resto
+                                                                                Name</label>
+                                                                            <input type="text" class="form-control"
+                                                                                id="formGroupExampleInput"
+                                                                                placeholder="Tempat Bersua Cafe..."
+                                                                                name="nama_cafe"
+                                                                                value="{{ $data->namaresto }}"">
+                                                                        </div>
+
+                                                                        <div class="mb-3">
+                                                                            <label for="formGroupExampleInput"
+                                                                                class="form-label">District</label>
+                                                                            <select name="kawasan" class="form-select"
+                                                                                aria-label="Default select example">
+                                                                                <option selected hidden disabled>Choose
+                                                                                    District</option>
+                                                                                <option value="Buahbatu"
+                                                                                    <?php if ($data->district == 'Buahbatu') {
+                                                                                        echo 'selected';
+                                                                                    } ?>>Buahbatu
+                                                                                </option>
+                                                                                <option
+                                                                                    value="Dipati Ukur"<?php if ($data->district == 'Dipati Ukur') {
+                                                                                        echo 'selected';
+                                                                                    } ?>>
+                                                                                    Dipati Ukur
+                                                                                </option>
+                                                                                <option value="Riau"
+                                                                                    <?php if ($data->district == 'Riau') {
+                                                                                        echo 'selected';
+                                                                                    } ?>>Riau</option>
+                                                                            </select>
+                                                                        </div>
+                                                                        <div class="mb-3">
+                                                                            <label for="formGroupExampleInput"
+                                                                                class="form-label">Address</label>
+                                                                            <textarea type="text" class="form-control" id="formGroupExampleInput"
+                                                                                placeholder="Jalan Tempat Bersua, Bandung..." name="lokasi_cafe">{{ $data->address }}</textarea>
+                                                                        </div>
+                                                                        <div class="row">
+
+                                                                            <div class="col-md-6">
+                                                                                <label for="inputEmail4"
+                                                                                    class="form-label">Open
+                                                                                    Time</label>
+                                                                                <input type="time"
+                                                                                    class="form-control"
+                                                                                    name="waktubuka" id="inputEmail4"
+                                                                                    value="{{ $data->open }}">
+                                                                            </div>
+                                                                            <div class="col-md-6">
+                                                                                <label for="inputPassword4"
+                                                                                    class="form-label">Closed
+                                                                                    Time</label>
+                                                                                <input type="time"
+                                                                                    class="form-control"
+                                                                                    name="waktututup"
+                                                                                    id="inputPassword4"
+                                                                                    value="{{ $data->close }}">
+                                                                            </div>
+                                                                        </div>
+
+                                                                        <label for="inputPassword4"
+                                                                            class="form-label mt-3">Price Range</label>
+                                                                        <div class="row">
+
+                                                                            <div class="col-md-6">
+                                                                                <label for="inputEmail4"
+                                                                                    class="form-label">Start
+                                                                                    From</label>
+                                                                                <div class="input-group mb-2">
+                                                                                    <span
+                                                                                        class="input-group-text">Rp.</span>
+                                                                                    <input type="text"
+                                                                                        class="form-control"
+                                                                                        name="harga1"
+                                                                                        aria-label="Amount (to the nearest dollar)"
+                                                                                        value="{{ $data->price }}">
+                                                                                    <span
+                                                                                        class="input-group-text">.00</span>
+                                                                                </div>
+                                                                            </div>
+                                                                            <div class="col-md-6">
+                                                                                <label for="inputPassword4"
+                                                                                    class="form-label">Up To</label>
+                                                                                <div class="input-group mb-2">
+                                                                                    <span
+                                                                                        class="input-group-text">Rp.</span>
+                                                                                    <input type="text"
+                                                                                        class="form-control"
+                                                                                        name="harga2"
+                                                                                        aria-label="Amount (to the nearest dollar)"
+                                                                                        value="{{ $data->upto }}">
+                                                                                    <span
+                                                                                        class="input-group-text">.00</span>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+
+                                                                        <div class="mb-3">
+                                                                            <label for="formGroupExampleInput"
+                                                                                class="form-label">Recommend</label>
+                                                                            <select name="rekomen" class="form-select"
+                                                                                aria-label="Default select example">
+                                                                                <option selected hidden disabled>Choose
+                                                                                </option>
+                                                                                <option value="ya"
+                                                                                    <?php if ($data->rekomen == 'ya') {
+                                                                                        echo 'selected';
+                                                                                    } ?>>Ya
+                                                                                </option>
+                                                                                <option
+                                                                                    value="tidak"<?php if ($data->rekomen == 'tidak') {
+                                                                                        echo 'selected';
+                                                                                    } ?>>
+                                                                                    Tidak
+                                                                                </option>
+                                                                            </select>
+                                                                        </div>
+
+                                                                        <label for="inputPassword4"
+                                                                            class="form-label mt-3 mb-0">Add
+                                                                            Photo's</label>
+
+
+                                                                        <div class="input-group mt-3 mb-3">
+                                                                            <input class="form-control"
+                                                                                id="foto_thumb" name="foto_thumb"
+                                                                                type="file"
+                                                                                accept=".jpg, .png, .jpeg">
+                                                                            <label class="input-group-text"
+                                                                                for="inputGroupFile02"
+                                                                                style="width: 10vw;">Thumbnail</label>
+                                                                        </div>
+                                                                        <div class="prev-thumb"></div>
+
+
+                                                                        <div class="input-group mt-3 mb-3">
+                                                                            <input class="form-control"
+                                                                                id="foto_slide" name="foto_slide"
+                                                                                type="file" multiple
+                                                                                accept=".jpg, .png, .jpeg">
+                                                                            <label class="input-group-text"
+                                                                                for="inputGroupFile02"
+                                                                                style="width: 10vw;">
+                                                                                Content</label>
+                                                                        </div>
+                                                                        <div class="prev-slide"></div>
+
+                                                                        <div class="input-group mt-3 mb-3">
+                                                                            <input class="form-control" id="foto_menu"
+                                                                                name="foto_menu" type="file"
+                                                                                multiple accept=".jpg, .png, .jpeg">
+                                                                            <label class="input-group-text"
+                                                                                for="inputGroupFile02"
+                                                                                style="width: 10vw;">
+                                                                                Menu's</label>
+                                                                        </div>
+                                                                        <div class="prev-menu"></div>
+
+
+
+                                                                </div>
+                                                                <div class="modal-footer">
+                                                                    <button type="button" class="btn btn-secondary"
+                                                                        data-bs-dismiss="modal">Close</button>
+                                                                    <button type="submit"
+                                                                        class="btn btn-primary">Save
+                                                                        changes</button>
+                                                                </div>
+                                                                </form>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
                                             </div>
-                                        </div>
-                                    </a>
-                                </div>
-                            @endforeach
+                                        </a>
+                                    </div>
+                                @endforeach
                             </div>
                         </div>
                     </center>
@@ -124,7 +332,8 @@
                                 <div class="row mb-3">
                                     <div class="col-lg-2 ms-2">
                                         @if ($i->foto != null)
-                                            <img src="ava/{{ $i->foto }}" class="ava">
+                                            <img src="{{ asset('ava/'. $i->foto) }}"
+                                                class="ava">
                                         @else
                                             <img style="border-radius: 100%; width: 50px; height: 50px; "
                                                 src="https://t3.ftcdn.net/jpg/03/46/83/96/360_F_346839683_6nAPzbhpSkIpb8pmAwufkC7c5eD7wYws.jpg">
@@ -163,26 +372,28 @@
                     </thead>
 
                     <tbody>
-                    @foreach ($waiting as $data)
-                        <tr>
-                            <th>{{$data->namaresto}}</th>
-                            <th>{{$data->address}}</th>
-                            <th>{{$data->open}} - {{$data->close}}</th>
-                            <th>{{$data->price}} - {{$data->upto}}</th>
-                            <th>{{$data->category}}</th>
-                            <th>
-                                <center>
-                                    <form action="/ubahStatusPost/{{$data->id}}" method="post">
-                                        @csrf
-                                        <button type="submit" class="btn btn-success text-white mx-2">Post</button>
-                                    </form>
-                                    <form action="/ubahStatusDecline/{{$data->id}}" method="post">
-                                        @csrf
-                                        <button type="submit" class="btn btn-danger text-white mx-2">Decline</button>
-                                    </form>
-                                </center>
-                            </th>
-                        </tr>
+                        @foreach ($waiting as $data)
+                            <tr>
+                                <th>{{ $data->namaresto }}</th>
+                                <th>{{ $data->address }}</th>
+                                <th>{{ $data->open }} - {{ $data->close }}</th>
+                                <th>{{ $data->price }} - {{ $data->upto }}</th>
+                                <th>{{ $data->category }}</th>
+                                <th>
+                                    <center>
+                                        <form action="/ubahStatusPost/{{ $data->id }}" method="post">
+                                            @csrf
+                                            <button type="submit"
+                                                class="btn btn-success text-white mx-2">Post</button>
+                                        </form>
+                                        <form action="/ubahStatusDecline/{{ $data->id }}" method="post">
+                                            @csrf
+                                            <button type="submit"
+                                                class="btn btn-danger text-white mx-2">Decline</button>
+                                        </form>
+                                    </center>
+                                </th>
+                            </tr>
                         @endforeach
                     </tbody>
                 </table>
@@ -194,9 +405,10 @@
                 <div class="col-6">
                     <div class="row-lg-12">
                         <div class="col">
-                            <h1 class="mt-5" align="center">Add Resto</h1>
+                            <h1 class="mt-5" align="center">Advertise</h1>
                             <hr style="border-top: 3px solid black;">
-                            <form action="/iklanAdmin" method="POST" enctype="multipart/form-data" class="form_iklan">
+                            <form action="/iklanAdmin" method="POST" enctype="multipart/form-data"
+                                class="form_iklan">
                                 @csrf
                                 <div class="card mx-4 " style="height: 105vh;">
                                     <div class="card-body scrollY">
@@ -209,8 +421,13 @@
 
                                         <div class="mb-3">
                                             <label for="formGroupExampleInput" class="form-label">District</label>
-                                            <input type="text" class="form-control" id="formGroupExampleInput"
-                                                placeholder="Buahbatu" name="kawasan">
+                                            <select name="kawasan" class="form-select"
+                                                aria-label="Default select example">
+                                                <option selected hidden disabled>Choose District</option>
+                                                <option value="Buahbatu">Buahbatu</option>
+                                                <option value="Dipati Ukur">Dipati Ukur</option>
+                                                <option value="Riau">Riau</option>
+                                            </select>
                                         </div>
                                         <div class="mb-3">
                                             <label for="formGroupExampleInput" class="form-label">Address</label>
@@ -221,11 +438,13 @@
 
                                             <div class="col-md-6">
                                                 <label for="inputEmail4" class="form-label">Open Time</label>
-                                                <input type="time" class="form-control" name="waktubuka" id="inputEmail4">
+                                                <input type="time" class="form-control" name="waktubuka"
+                                                    id="inputEmail4">
                                             </div>
                                             <div class="col-md-6">
                                                 <label for="inputPassword4" class="form-label">Closed Time</label>
-                                                <input type="time" class="form-control" name="waktututup" id="inputPassword4">
+                                                <input type="time" class="form-control" name="waktututup"
+                                                    id="inputPassword4">
                                             </div>
                                         </div>
 
@@ -259,32 +478,32 @@
                                             <label class="input-group-text" for="inputGroupFile02"
                                                 style="width: 10vw;">Thumbnail</label>
                                         </div>
-                                        <div class="prev-thumb"></div>
+                                        <div class="prev-thum"></div>
 
 
                                         <div class="input-group mt-3 mb-3">
-                                            <input class="form-control" id="foto_slide" name="foto_slide"
+                                            <input class="form-control" id="foto_slide" name="foto_slide[]"
                                                 type="file" multiple accept=".jpg, .png, .jpeg">
                                             <label class="input-group-text" for="inputGroupFile02"
                                                 style="width: 10vw;">
                                                 Content</label>
                                         </div>
-                                        <div class="prev-slide"></div>
+                                        <div class="prev-slid"></div>
 
                                         <div class="input-group mt-3 mb-3">
-                                            <input class="form-control" id="foto_menu" name="foto_menu"
+                                            <input class="form-control" id="foto_menu" name="foto_menu[]"
                                                 type="file" multiple accept=".jpg, .png, .jpeg">
                                             <label class="input-group-text" for="inputGroupFile02"
                                                 style="width: 10vw;">
                                                 Menu's</label>
                                         </div>
-                                        <div class="prev-menu"></div>
+                                        <div class="prev-menus"></div>
 
                                     </div>
 
                                     <div class="d-grid gap-2 mx-4 mt-3 mb-3">
-                                        <button class="btn btn-primary btn-success" type="submit"
-                                            >Advertise Now</button>
+                                        <button class="btn btn-primary btn-success" type="submit">Advertise
+                                            Now</button>
                                     </div>
                                 </div>
 
@@ -335,7 +554,8 @@
                                                             </g>
                                                         </g>
                                                     </g>
-                                                </svg></div>
+                                                </svg>
+                                            </div>
                                             <div style="padding-top: 8px;">
                                                 <div
                                                     style=" color:#3897f0; font-family:Arial,sans-serif; font-size:14px; font-style:normal; font-weight:550; line-height:18px;">
@@ -390,7 +610,8 @@
                                             <a href="https://www.instagram.com/p/Cj4_TiBJIWp/?utm_source=ig_embed&amp;utm_campaign=loading"
                                                 style=" color:#c9c8cd; font-family:Arial,sans-serif; font-size:14px; font-style:normal; font-weight:normal; line-height:17px; text-decoration:none;"
                                                 target="_blank">A post shared by Bandung Kuliner | bdgfoodies
-                                                (@bandungfoodie)</a></p>
+                                                (@bandungfoodie)</a>
+                                        </p>
                                     </div>
                                 </blockquote>
                                 <script async src="//www.instagram.com/embed.js"></script>
@@ -434,7 +655,8 @@
                                                             </g>
                                                         </g>
                                                     </g>
-                                                </svg></div>
+                                                </svg>
+                                            </div>
                                             <div style="padding-top: 8px;">
                                                 <div
                                                     style=" color:#3897f0; font-family:Arial,sans-serif; font-size:14px; font-style:normal; font-weight:550; line-height:18px;">
@@ -489,7 +711,8 @@
                                             <a href="https://www.instagram.com/p/CmtBCYkBX1R/?utm_source=ig_embed&amp;utm_campaign=loading"
                                                 style=" color:#c9c8cd; font-family:Arial,sans-serif; font-size:14px; font-style:normal; font-weight:normal; line-height:17px; text-decoration:none;"
                                                 target="_blank">A post shared by Kuliner Bandung Bandung Society
-                                                (@bdgsociety)</a></p>
+                                                (@bdgsociety)</a>
+                                        </p>
                                     </div>
                                 </blockquote>
                                 <script async src="//www.instagram.com/embed.js"></script>
@@ -533,7 +756,8 @@
                                                             </g>
                                                         </g>
                                                     </g>
-                                                </svg></div>
+                                                </svg>
+                                            </div>
                                             <div style="padding-top: 8px;">
                                                 <div
                                                     style=" color:#3897f0; font-family:Arial,sans-serif; font-size:14px; font-style:normal; font-weight:550; line-height:18px;">

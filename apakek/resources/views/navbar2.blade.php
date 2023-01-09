@@ -26,7 +26,7 @@
         href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100;200;300;400;500;600;700;800;900&display=swap"
         rel="stylesheet">
     <!-- CSS -->
-    <link rel="stylesheet" href="css/style.css" />
+    <link rel="stylesheet" href="{{ asset('css/style.css') }}" />
     <title>Tempat Bersua</title>
 </head>
 
@@ -37,12 +37,12 @@
             <div class="container2">
                 <div class="box-navbar2">
                     <div class="logo2">
-                        <a href="explore"><img src="img/logo.png"></a>
+                        <a href="explore"><img src="{{ asset('img/logo.png') }}"></a>
                     </div>
                     <ul class="menu2">
-                        <li><a class="nav-link" href="foryou">For You</a></li>
-                        <li><a class="nav-link" href="like">Like</a></li>
-                        <li><a class="nav-link" href="explore">Explore</a></li>
+                        <li><a class="nav-link" href="/foryou">For You</a></li>
+                        <li><a class="nav-link" href="/like">Like</a></li>
+                        <li><a class="nav-link" href="/explore">Explore</a></li>
                         </li>
                     </ul>
                     <form class="d-flex" role="search">
@@ -53,7 +53,7 @@
                         <a class="nav-link dropdown-toggle text-light" type="button" data-bs-toggle="dropdown"
                             aria-expanded="false">
                             @if(Auth::user()->foto != null)
-                            <img src="ava/{{Auth::user()->foto}}" class="ava" >
+                            <img src="{{ asset('ava/'.Auth::user()->foto) }}" class="ava" >
                             @else
                             <img class="ava" src="https://t3.ftcdn.net/jpg/03/46/83/96/360_F_346839683_6nAPzbhpSkIpb8pmAwufkC7c5eD7wYws.jpg">
                             @endif

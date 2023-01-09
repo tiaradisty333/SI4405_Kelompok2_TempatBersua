@@ -1,4 +1,5 @@
-@include('navbar2')
+@extends('navbar2')
+@section('content')
 
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet">
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js"></script>
@@ -21,23 +22,22 @@
             </div>
 
             <div class="row row-cols-1 row-cols-md-5">
-                <?php for($i=0; $i<15; $i++){ ?>
+                @foreach ($resto as $data)
                 <div class="col px-3">
-                    <a href="#" style="text-decoration: none;">
+                    <a href="/detail/{{ $data->resto->id }}" style="text-decoration: none;">
                         <div class="card mb-3" style="border-radius:10px; border:none">
-                            <img src="img/eskalasi.png" class="card-img-top" alt="..." style="border-radius: 10px">
+                            <img src="{{ asset('gambar_resto/'.$data->resto->thumbnail) }}" class="card-img-top" alt="..." style="border-radius: 10px">
                             <div class="card-body" style="height: 10vh">
                                 <center>
-                                    <p class="card-title" style="font-size: 1.1vmax; color:black;">Card title
+                                    <p class="card-title" style="font-size: 1.1vmax; color:black;">{{ $data->resto->namaresto }}
                                     </p>
-                                    <p class="card-text" style="font-size: 0.9vmax; color:black;">This is a
-                                        longer card with</p>
+                                    <p class="card-text" style="font-size: 0.9vmax; color:black;">{{ $data->resto->address }}</p>
                                 </center>
                             </div>
                         </div>
                     </a>
                 </div>
-                <?php } ?>
+                @endforeach
             </div>
         </div>
         {{-- <br> --}}
@@ -55,3 +55,4 @@
     </div>
 
 </div>
+@endsection
