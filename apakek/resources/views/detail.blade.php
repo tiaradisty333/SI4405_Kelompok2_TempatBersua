@@ -11,8 +11,8 @@
                     <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="true">
                         <div class="carousel-inner">
                             <div class="carousel-item active">
-                                <img src="{{ asset('gambar_resto/' . $detailResto->thumbnail) }}" class="carouselimg d-block"
-                                    alt="...">
+                                <img src="{{ asset('gambar_resto/' . $detailResto->thumbnail) }}"
+                                    class="carouselimg d-block" alt="...">
                             </div>
                             @foreach (json_decode($detailResto->content) as $gambar)
                                 <div class="carousel-item">
@@ -111,7 +111,7 @@
                             <div class="modal-dialog" style="margin-top: 13vh; height: 83vh; width: 50vw;">
                                 <div class="modal-content" style="background-color: #ffffff00">
                                     @foreach (json_decode($detailResto->menu) as $gambar)
-                                    <img class="mb-2" src="{{ asset('gambar_resto/'.$gambar) }}" alt="">
+                                        <img class="mb-2" src="{{ asset('gambar_resto/' . $gambar) }}" alt="">
                                     @endforeach
                                 </div>
                             </div>
@@ -544,8 +544,8 @@
                             <div class="card mb-3"
                                 style="border-radius:10px; box-shadow: -5px 5px 10px rgba(128, 128, 128, 0.63);">
                                 <img src="{{ asset('gambar_resto/' . $data->thumbnail) }}" class="card-img-top"
-                                    alt="...">
-                                <div class="card-body" style="height: 10vh">
+                                    height="150" alt="...">
+                                <div class="card-body" style="height: 15vh">
                                     <center>
                                         <p class="card-title" style="font-size: 1.1vmax; color:black;">
                                             {{ $data->namaresto }}
