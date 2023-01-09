@@ -42,15 +42,15 @@
         <img class="kopi4" src="{{ asset('img/kopi4.png')}}">
 
         <div class="kopi">
-            <p><b>Searching For Caffe ? <b></p>
+            <p><b>Searching For Cafe? <b></p>
         </div>
         <div class="kosu">
             <p>What Would You Like To Try Right Now?
-                Now It's Coffee Milk Season.
-                Try Our Selection Of Coffee Milk</p>
+                Now It's Iced Coffee Season.
+                Try Our Selection Of Iced Coffee.</p>
         </div>
         <a href="#"><button class="carikopi">
-                Coffee Milk
+                Iced Coffee
             </button></a>
         <a href="#"><button class="explore">
                 Explore</button></a>

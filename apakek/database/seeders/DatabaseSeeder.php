@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 use App\Models\Resto;
+use App\Models\User;
 
 
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
@@ -256,6 +257,15 @@ class DatabaseSeeder extends Seeder
         'status'=>'approved',
         'rekomen'=>'tidak'
     ]);
+    User::create([
+        'username'=>'TempatBersua',
+        'email'=>'tempatbersua@gmail.com',
+        'password'=>bcrypt('123'),
+        'role'=>'admin',
+        'status'=>'logged in',
+        'foto'=>'logo.png',
+    ]);
+
         // \App\Models\User::factory(10)->create();
 
         // \App\Models\User::factory()->create([
